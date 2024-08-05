@@ -51,28 +51,39 @@ class GFG {
 
 class Solution {
     public static ArrayList<Integer> subarraySum(int[] arr, int n, int s) {
-        ArrayList<Integer> al = new ArrayList<>();
-        int sum = 0;
-        int i = 0;
-
-        for(int j=0;j<n;j++) {
-            sum += arr[j];
-
-            while (sum > s && i <= j) {
-                sum -= arr[i];
-                i++;
+  int sum=0,i=0,j=0,flag=0;
+        ArrayList<Integer> a=new ArrayList<>(2);
+        if(s==0){
+            for(i=0;i<n;i++){
+                if(arr[i]==0){
+                    flag=1;
+                    break;
+                }
             }
-
-            if (sum == s && i<=j) {
-                al.add(i + 1); 
-                al.add(j + 1);  
-                return al;
+            if(flag==1){
+                a.add(i+1);
+                a.add(i+1);
             }
-
-            
         }
-
-        al.add(-1); 
-        return al;
+        else{
+            while (i<n || j<n){
+                if ( sum<s && j==n )
+                break;
+                if (sum<s){
+                    sum+=arr[j++];
+                }
+                else if(sum>s){
+                    sum-=arr[i++];
+                }
+                if(sum==s){
+                    a.add(i+1);
+                    a.add(j);
+                    break;
+                }
+            }
+        }
+        if (a.isEmpty())
+        a.add(-1);
+        return a;
     }
 }
