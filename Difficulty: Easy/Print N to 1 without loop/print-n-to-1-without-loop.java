@@ -23,9 +23,6 @@ System.out.println("~");
 
 class Solution {
     void printNos(int N) {
-               
-        
-        
         if(N <= 0){
             return;
         }
