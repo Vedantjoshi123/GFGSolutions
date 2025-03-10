@@ -24,13 +24,12 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    int i = 1;
     int sum = 0;
     int sumOfSeries(int n) {
-        while(i<=n){
-            sum += (i*i*i);
-            i++;
+        if(n==1){
+            return 1;
         }
+        sum =  n*n*n + sumOfSeries(n-1);
         return sum;
     }
 }
